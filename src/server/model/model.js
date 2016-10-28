@@ -1,5 +1,6 @@
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('endeavor', 'nicholasnelson', 'ilovetesting', {
+
+var Sequelize = require('sequelize');
+const sequelize = new Sequelize('endeavor', 'Vince', 'ilovetesting', {
   host: 'localhost',
   dialect: 'postgres'
 });
@@ -85,7 +86,7 @@ const User_Interest = sequelize.define('user_interest', {
   },
   interest_id: {
     type: Sequelize.INTEGER
-  }, 
+  },
   createdAt: {
    type: Sequelize.DATE,
    default: Date.now
@@ -110,7 +111,7 @@ const User_Project = sequelize.define('user_project', {
   },
   like: {
     type: Sequelize.BOOLEAN
-  }, 
+  },
   createdAt: {
    type: Sequelize.DATE,
    default: Date.now
@@ -289,6 +290,7 @@ sequelize.sync({
   });
 
 });
+
 
 function getUserData (username, callback) {
   User.findOne({where: { username: username}}).then((data) => {
