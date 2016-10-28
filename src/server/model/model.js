@@ -1,10 +1,6 @@
-<<<<<<< HEAD
+
 var Sequelize = require('sequelize');
 const sequelize = new Sequelize('endeavor', 'Vince', 'ilovetesting', {
-=======
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('endeavor', 'nicholasnelson', 'ilovetesting', {
->>>>>>> 0b8f04d9bfbdd4501bebd9e9413058d95826e269
   host: 'localhost',
   dialect: 'postgres'
 });
@@ -295,10 +291,7 @@ sequelize.sync({
 
 });
 
-<<<<<<< HEAD
-function getUserData (callback) {}
-module.exports.getUserData = getUserData;
-=======
+
 function getUserData (username, callback) {
   User.findOne({where: { username: username}}).then((data) => {
     return data ? callback(data.dataValues) : callback(data);
@@ -306,4 +299,3 @@ function getUserData (username, callback) {
 }
 
 module.exports = { getUserData };
->>>>>>> 0b8f04d9bfbdd4501bebd9e9413058d95826e269
