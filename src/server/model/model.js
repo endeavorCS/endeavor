@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 var Sequelize = require('sequelize');
 const sequelize = new Sequelize('endeavor', 'Vince', 'ilovetesting', {
+=======
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize('endeavor', 'nicholasnelson', 'ilovetesting', {
+>>>>>>> 0b8f04d9bfbdd4501bebd9e9413058d95826e269
   host: 'localhost',
   dialect: 'postgres'
 });
@@ -10,7 +15,7 @@ const User = sequelize.define('user', {
     type: Sequelize.INTEGER,
     primaryKey: true
   },
-  first_name: {
+  username: {
     type: Sequelize.TEXT
   },
   email_address: {
@@ -149,22 +154,22 @@ sequelize.sync({
 }).then(() => {
   const users = [
     {
-      first_name: 'hoon',
+      username: 'hoon',
       email_address: 'patrick@email.com',
       password: 'a'
     },
     {
-      first_name: 'nick',
+      username: 'nick',
       email_address: 'patrick@email.com',
       password: 'a'
     },
     {
-      first_name: 'dan',
+      username: 'dan',
       email_address: 'patrick@email.com',
       password: 'a'
     },
     {
-      first_name: 'patrick',
+      username: 'patrick',
       email_address: 'patrick@email.com',
       password: 'a'
     },
@@ -290,5 +295,15 @@ sequelize.sync({
 
 });
 
+<<<<<<< HEAD
 function getUserData (callback) {}
 module.exports.getUserData = getUserData;
+=======
+function getUserData (username, callback) {
+  User.findOne({where: { username: username}}).then((data) => {
+    return data ? callback(data.dataValues) : callback(data);
+  });
+}
+
+module.exports = { getUserData };
+>>>>>>> 0b8f04d9bfbdd4501bebd9e9413058d95826e269
