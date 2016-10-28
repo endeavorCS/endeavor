@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/server/app.js',
+  entry: './src/client/app.js',
   output : {
     path: './bin',
     filename: 'app.bundle.js'
