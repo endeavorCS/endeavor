@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 var Sequelize = require('sequelize');
 const sequelize = new Sequelize('endeavor', 'Vince', 'ilovetesting', {
-=======
-const Sequelize = require('sequelize');
-const sequelize = new Sequelize('endeavor', 'pdivine', 'ilovetesting', {
->>>>>>> 95dab8e6f04bd5042345008d2f753a8b5c8708ba
   host: 'localhost',
   dialect: 'postgres'
 });
@@ -90,7 +85,7 @@ const User_Interest = sequelize.define('user_interest', {
   },
   interest_id: {
     type: Sequelize.INTEGER
-  }, 
+  },
   createdAt: {
    type: Sequelize.DATE,
    default: Date.now
@@ -115,7 +110,7 @@ const User_Project = sequelize.define('user_project', {
   },
   like: {
     type: Sequelize.BOOLEAN
-  }, 
+  },
   createdAt: {
    type: Sequelize.DATE,
    default: Date.now
