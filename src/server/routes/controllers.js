@@ -31,6 +31,10 @@ function getProjectInterestsController (req, res) {
   model.getProjectInterests(project, (projectData) => res.json(projectData));
 }
 
+function getSuggestedProjectsController (req, res) {
+  const user = req.params.user;
+  model.getSuggestedProjects(user, (projectData) => res.json(projectData));
+}
 
 module.exports = { 
   getUserInfoController,
@@ -38,5 +42,6 @@ module.exports = {
   getRelatedInterestsController,
   getProjectInfoController,
   getProjectUsersController,
-  getProjectInterestsController
+  getProjectInterestsController,
+  getSuggestedProjectsController
 };
