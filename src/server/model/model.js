@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = new Sequelize('endeavor', 'pdivine', 'ilovetesting', {
+
   host: 'localhost',
   dialect: 'postgres'
 });
@@ -85,7 +86,7 @@ const User_Interest = sequelize.define('user_interest', {
   },
   interest_id: {
     type: Sequelize.INTEGER
-  }, 
+  },
   createdAt: {
    type: Sequelize.DATE,
    default: Date.now
@@ -110,7 +111,7 @@ const User_Project = sequelize.define('user_project', {
   },
   like: {
     type: Sequelize.BOOLEAN
-  }, 
+  },
   createdAt: {
    type: Sequelize.DATE,
    default: Date.now
@@ -292,12 +293,14 @@ sequelize.sync({
 
 });
 
+
 function getUserData (username, callback) {
   User.findOne({where: { username: username}}).then((data) => {
     return data ? callback(data.dataValues) : callback(data);
   });
 }
 
+<<<<<<< HEAD
 function getRelatedProjects (username, callback) {
   User.hasMany(User_Project, {foreignKey: 'user_id'});
   Project.hasMany(User_Project, {foreignKey: 'project_id'});
@@ -384,3 +387,6 @@ module.exports = {
   getProjectUsers,
   getProjectInterests
 };
+=======
+module.exports = { getUserData };
+>>>>>>> 1ef0da2d0bbcdbc120005a123107e0635aded27c
