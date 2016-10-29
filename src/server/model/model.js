@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = new Sequelize('endeavor', 'pdivine', 'ilovetesting', {
+const sequelize = new Sequelize('endeavor', 'nicholasnelson', 'ilovetesting', {
 
   host: 'localhost',
   dialect: 'postgres'
@@ -381,11 +381,9 @@ function getProjectInterests (name, callback) {
 function getSuggestedProjects (username, callback) {
   getRelatedInterests(username, (interests) => {
 
-    console.log('interests', interests);
     const interestArr = interests.map((interest) => {
       return interest.keyword;
     });
-    console.log('interestArr', interestArr);
 
     Interest.hasMany(Project_Interest, {foreignKey: 'interest_id'});
     Project.hasMany(Project_Interest, {foreignKey: 'project_id'});
@@ -393,7 +391,6 @@ function getSuggestedProjects (username, callback) {
     Project_Interest.belongsTo(Project, {foreignKey: 'project_id'});
     Project_Interest.findAll({include: [{ "model": Interest, "where" : { "keyword": interestArr } }, Project ]})
     .then((userOptions) => {
-      console.log('userOptions', userOptions);
       const mappedUsers = userOptions.map( ele => {
         // Destructure Project object
         const {id, name, description, github_link} = ele.dataValues.project;
