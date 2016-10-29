@@ -50,16 +50,6 @@ app.use(passport.session());
 // Serve static
 app.use(express.static(path.join(__dirname, '../../bin')));
 
-//Handle gets
-app.get('/user/basic/:user', ensureAuthenticated, routeControllers.getUserInfoController);
-app.get('/user/related_projects/:user', ensureAuthenticated, routeControllers.getRelatedProjectsController);
-app.get('/user/related_interests/:user', ensureAuthenticated, routeControllers.getRelatedInterestsController);
-app.get('/user/suggested_projects/:user', ensureAuthenticated, routeControllers.getSuggestedProjectsController);
-
-app.get('/project/basic/:project', ensureAuthenticated, routeControllers.getProjectInfoController);
-app.get('/project/related_users/:project', ensureAuthenticated, routeControllers.getProjectUsersController);
-app.get('/project/related_interests/:project', ensureAuthenticated, routeControllers.getProjectInterestsController);
-
 // Endpoint to handle github oAuth
 app.get('/auth/github',
   passport.authenticate('github', { scope: [ 'user:email' ] }),
@@ -86,6 +76,20 @@ app.get('/logout', function(req, res){
   req.logout();
   res.redirect('/');
 });
+
+app.use(ensureAuthenticated);
+
+//Handle gets
+app.get('/user/basic/:user', routeControllers.getUserInfoController);
+app.get('/user/related_projects/:user', routeControllers.getRelatedProjectsController);
+app.get('/user/related_interests/:user', routeControllers.getRelatedInterestsController);
+app.get('/user/suggested_projects/:user', routeControllers.getSuggestedProjectsController);
+
+app.get('/project/basic/:project', routeControllers.getProjectInfoController);
+app.get('/project/related_users/:project', routeControllers.getProjectUsersController);
+app.get('/project/related_interests/:project', routeControllers.getProjectInterestsController);
+
+
 
 // Check if user is authenticated
 // Place this on any route you wish to protect
