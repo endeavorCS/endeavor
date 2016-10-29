@@ -300,7 +300,6 @@ function getUserData (username, callback) {
   });
 }
 
-<<<<<<< HEAD
 function getRelatedProjects (username, callback) {
   User.hasMany(User_Project, {foreignKey: 'user_id'});
   Project.hasMany(User_Project, {foreignKey: 'project_id'});
@@ -387,6 +386,3 @@ module.exports = {
   getProjectUsers,
   getProjectInterests
 };
-=======
-module.exports = { getUserData };
->>>>>>> 1ef0da2d0bbcdbc120005a123107e0635aded27c
