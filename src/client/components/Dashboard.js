@@ -5,16 +5,31 @@ import ProjectBlurb from './ProjectBlurb.js';
 
 class Dashboard extends Component {
 
-  getMatchedProjects() {
-    const projects = [{
-      name: 'nSource',
-      github_link: 'http://...',
-      description: 'grocery store maps',
-      tags: [{id: 0, keyword: 'javascript'}]
-    },
-      {}
-    ];
-    <ProjectBlurb />
+  // getMatchedProjects() {
+  //   fetch('./user/suggested_projects/hoon/', {
+  //     method: 'get'
+  //   }).then(response => {
+  //     return response.json();
+  //   }).then(data => {
+  //     console.log(data);
+  //   }).catch(error => {
+  //     console.log('get request error!');
+  //   })
+  //   // <ProjectBlurb />
+  // }
+  componentDidMount() {
+    this.props.getSuggestedProjects();
+  }
+  generateProjBlurbs() {
+    return this.props.dashboardProj.map(proj => {
+      return (
+        <ProjectBlurb
+          name = {proj.name}
+          desc = {proj.description}
+          git = {proj.github_link}
+          key = {proj.id} />
+      );
+    });
   }
   render() {
     return (
@@ -28,7 +43,7 @@ class Dashboard extends Component {
         <Profile profile = {this.props.profile}/>
 
         <div style = {{display: (this.props.dashboard) ? 'block' : 'none'}}>
-          <ProjectBlurb />
+          {this.generateProjBlurbs()}
         </div>
       </div>
     )

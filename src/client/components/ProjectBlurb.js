@@ -4,10 +4,11 @@ class ProjectBlurb extends Component {
   render() {
     return (
       <div>
-        <div>Project Name</div>
-        <div>Git Link</div>
-        <div>Description</div>
-        <div>Tags</div>
+        <div className='projName'>{this.props.name}</div>
+        <div className='projDesc'>{this.props.desc}</div>
+        <div className='projGitLink'>
+          <a href={this.props.git}>Github link</a>
+        </div>
       </div>
     );
   }
