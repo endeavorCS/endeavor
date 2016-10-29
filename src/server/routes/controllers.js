@@ -1,9 +1,42 @@
 const model = require('../model/model.js');
 
-function getUserInfo (req, res) {
+function getUserInfoController (req, res) {
   const username = req.params.user;
-  console.log(username);
-  model.getUserData(username, (userData) => res.send(userData));
+  model.getUserData(username, (userData) => res.json(userData));
 }
 
-module.exports = { getUserInfo };
+function getRelatedProjectsController (req, res) {
+  const username = req.params.user;
+  model.getRelatedProjects(username, (projectData) => res.json(projectData));
+}
+
+function getRelatedInterestsController (req, res) {
+  const username = req.params.user;
+  model.getRelatedInterests(username, (projectData) => res.json(projectData));
+}
+
+function getProjectInfoController (req, res) {
+  const project = req.params.project;
+  model.getProjectInfo(project, (projectData) => res.json(projectData));
+}
+
+function getProjectUsersController (req, res) {
+  const project = req.params.project;
+  console.log('project', project);
+  model.getProjectUsers(project, (projectData) => res.json(projectData));
+}
+
+function getProjectInterestsController (req, res) {
+  const project = req.params.project;
+  model.getProjectInterests(project, (projectData) => res.json(projectData));
+}
+
+
+module.exports = { 
+  getUserInfoController,
+  getRelatedProjectsController,
+  getRelatedInterestsController,
+  getProjectInfoController,
+  getProjectUsersController,
+  getProjectInterestsController
+};
