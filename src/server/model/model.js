@@ -410,6 +410,22 @@ function getSuggestedProjects (username, callback) {
       }
       return userOptions.length ? callback(arr) : callback([]);
     });
+  })
+  // User.hasMany(User_Project, {foreignKey: 'user_id'});
+  // Project.hasMany(User_Project, {foreignKey: 'project_id'});
+  // User_Project.belongsTo(User, {foreignKey: 'user_id'});
+  // User_Project.belongsTo(Project, {foreignKey: 'project_id'});
+  
+  // // For reference: https://github.com/sequelize/sequelize/issues/1775
+  // User_Project.findAll({include: [{ "model": User, "where" : { "username": username } }, Project ]})
+  // .then((userOptions) => {
+  //   const mappedProjects = userOptions.map( ele => {
+  //     // Destructure project object
+  //     const {id, name, description, github_link} = ele.dataValues.project;
+  //     return {id, name, description, github_link};
+  //   });
+  //   return userOptions.length ? callback(mappedProjects) : callback([]);
+  // });
 }
 
 module.exports = { 
