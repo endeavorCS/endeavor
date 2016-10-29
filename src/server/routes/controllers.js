@@ -40,6 +40,7 @@ function getAllDataForUser (req, res) {
 
   Promise.all(promArray)
   .then(()=>{
+    data.push(req.user._json);
     res.json(data);
   });
 }
@@ -54,7 +55,6 @@ function getProjectInfoController (req, res) {
 
 function getProjectUsersController (req, res) {
   const project = req.params.project;
-  console.log('project', project);
   model.getProjectUsers(project, (projectData) => res.json(projectData));
 }
 
@@ -64,6 +64,7 @@ function getProjectInterestsController (req, res) {
 }
 
 function getAllDataForProject (req, res) {
+
   const project = req.params.project;
   const data = [];
 
@@ -80,6 +81,7 @@ function getAllDataForProject (req, res) {
 
   Promise.all(promArray)
   .then(()=>{
+    data.push(req.user._json);
     res.json(data);
   });
 }
